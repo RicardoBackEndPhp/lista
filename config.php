@@ -13,5 +13,5 @@ define('DATABASE', [
     'NAME' => 'lista'
 ]);
 
+//require __DIR__ . '/vendor/autoload.php';
 require_once __DIR__ . '/source/crud/Conn.php';
-require_once __DIR__ . '/source/crud/Read.php';

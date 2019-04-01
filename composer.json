@@ -1,0 +1,17 @@
+{
+    "name": "vendor/lista",
+    "description": "Descrição do projeto lista.",
+    "authors": [
+        {
+            "name": "Ricardo de Oliveira",
+            "email": "ricardo.reksystem@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "CRUD\\": "Source/Crud/"
+        }
+    }
+}

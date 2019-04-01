@@ -29,7 +29,7 @@ $(function () {
         var form = $(this).parent('form');
 
         form.ajaxSubmit({
-            url: 'controller.php',
+            url: 'search.php',
             data: {action: 'search_product'},
             type: 'POST',
             dataType: 'json',
@@ -37,22 +37,7 @@ $(function () {
 
                 if (data.product) {
 
-                    if (!$(form).find('.j_term_content').length) {
-                        form.append("<div class='j_term_content'></div>");
-                    }
-
-                    $('.j_term_content').empty();
-
-                    $.each(data.product, function (key, value) {
-                        $('.j_term_content').append("<div class='j_term_content_item'>" +
-                            "<img src='_img/" + value['product_image'] + "' width='100' height='100'>" +
-                            "<div class='j_term_content_item_description'>" +
-                            "<p><a href='https://localhost/play/autocomplete/produto/" + value['product_url'] + "'>" + value['product_name'] + "</a></p>" +
-                            "<p>R$ " + value['product_price_full'] + "</p>" +
-                            "<p>5x de R$ " + value['product_price_installment'] + "</p>" +
-                            "</div>" +
-                            "</div>");
-                    });
+                    $("#show-body").html(data.product);
                 }
 
                 if (data.product_clear) {

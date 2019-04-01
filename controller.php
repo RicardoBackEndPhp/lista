@@ -16,13 +16,13 @@ switch ($action) {
         
         require_once __DIR__ . '/config.php';
         
-        $showList = CRUD\Conn::getConn()->prepare("SELECT * FROM list ORDER BY id_list DESC LIMIT 6 OFFSET " . $postData['offsetCount']);
+        $showList = CRUD\Conn::getConn()->prepare("SELECT * FROM list li INNER JOIN category ca ON li.category = ca.id_category ORDER BY li.id_list DESC LIMIT 6 OFFSET " . $postData['offsetCount']);
         $showList->execute();
         
         $template = "<div class='card'>
 
                     <div class='card_header'>
-                        <h1>#%s %s</h1>
+                        <h1>%s <small style='float: right; font-size: 12px'>#%s</small></h1>
                     </div>
 
                     <div class='card_content'>
@@ -41,8 +41,8 @@ switch ($action) {
         if ($showList->rowCount() > 0){
             foreach ($showList->fetchAll(PDO::FETCH_ASSOC) as $item){
                 $array = [
-                    'post_id' => $item['id_list'],
                     'post_title' => $item['title_list'],
+                    'category' => $item['name_category'],
                     'post_content' => $item['content_list'],
                     'param' => $item['id_list'],
                     'name_id' => $item['id_list'],
